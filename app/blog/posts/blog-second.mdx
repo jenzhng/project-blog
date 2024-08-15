@@ -8,9 +8,13 @@ Over the course of the Escape Room 3D Challenge Project, I was able to learn in-
 
 ## Physics-Based Puzzle
 
-One of the puzzles implemented for the project was a physics-based puzzle. The player can interact with the puzzle by click-and-drag or by using I-K-J-L keys on their keyboard.
+One of the puzzles implemented for the project was a physics-based puzzle. The player can interact with the puzzle by click-and-drag or by using I-K-J-L keys on their keyboard. There is a rigidbody component added to the ball in the maze that enables the ball to roll around the maze. Setting the mass to 10 gives the ball the momentum of a billiard ball. Below is an image example of the puzzle.
+
+ ![Maze Puzzle](/images/escape-room-maze.png)
 
 ## Simple HUD and UI System
+
+Another aspect of the game is a interaction system that allows the player to see the name of an object they see through an on-screen pop-up window. The player can also see an extra description that shows more information about the object. There is also an optional hint system that the player can enable by pressing 'H' key. 
 
  ![Hint System and Inspect UI](/images/escape-room-hint.png)
 
@@ -31,24 +35,24 @@ public class ObjectController : MonoBehaviour
     [SerializeField] private InspectController inspectController;
 
     private bool isInteracting = false;  // Track interaction state
-
+    // Show object name
     public void ShowObjectName()
     {
         inspectController.ShowName(itemName);
         isInteracting = true;
     }
-
+    // Hide object name
     public void HideObjectName()
     {
         inspectController.HideName();
         isInteracting = false;
     }
-
+    // Show additional information
     public void ShowExtraInfo()
     {
         inspectController.ShowAdditionalInfo(itemExtraInfo);
     }
-
+    // Press 'H' to show the hint when inspecting item
     public void ShowHint()
     {
         if (isInteracting)
@@ -56,7 +60,7 @@ public class ObjectController : MonoBehaviour
             inspectController.ShowHint(hintText);
         }
     }
-
+    // Press 'H' to hide the hint when inspecting item
     public void HideHint()
     {
         if (isInteracting)
@@ -73,4 +77,7 @@ For future considerations of the project, we will work on optimizing the game by
 
 ## Conclusion
 
-Over the course of this project, our team was able to learn valuable skills such as team collaboration and version control on GitHub. We were able to figure our way around Unity 3D Game Engine and its many tools and services such as Animator, 2D Sprite Editor and its Scripting API. 
+Over the course of this project, our team was able to learn valuable skills such as team collaboration and version control on GitHub. We were able to figure our way around Unity 3D Game Engine and its many tools and services such as Animator, 2D Sprite Editor and its Scripting API. By working on this project, I have a newfound appreciation for game development and this project has given me encouragement to continue and create more simple web games. 
+
+Follow below link to try our game out!
+[Escape Room 3D Challenge Playable Demo](https://jenzhng.itch.io/escape-room-3d-challenge)

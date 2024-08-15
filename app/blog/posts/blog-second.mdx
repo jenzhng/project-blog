@@ -10,14 +10,61 @@ Over the course of the Escape Room 3D Challenge Project, I was able to learn in-
 
 One of the puzzles implemented for the project was a physics-based puzzle. The player can interact with the puzzle by click-and-drag or by using I-K-J-L keys on their keyboard.
 
+## Simple HUD and UI System
+
 
 
 ## Enhanced Readability and Maintainability
 
-## Facilitates Tooling and Refactoring
+## Inspect System
+
+Below is a snippet of code that implements the inspect object system in the project. This enables the player to inspect objects to get hints on how to proceed onto the next stage of the game.
 
 ```csharp
+public class ObjectController : MonoBehaviour
+{
+    [SerializeField] private string itemName;
+    [TextArea] [SerializeField] private string itemExtraInfo;
 
+    [TextArea] [SerializeField] private string hintText;
+
+    [SerializeField] private InspectController inspectController;
+
+    private bool isInteracting = false;  // Track interaction state
+
+    public void ShowObjectName()
+    {
+        inspectController.ShowName(itemName);
+        isInteracting = true;
+    }
+
+    public void HideObjectName()
+    {
+        inspectController.HideName();
+        isInteracting = false;
+    }
+
+    public void ShowExtraInfo()
+    {
+        inspectController.ShowAdditionalInfo(itemExtraInfo);
+    }
+
+    public void ShowHint()
+    {
+        if (isInteracting)
+        {
+            inspectController.ShowHint(hintText);
+        }
+    }
+
+    public void HideHint()
+    {
+        if (isInteracting)
+        {
+            inspectController.HideHint();
+        }
+    }
+}
 ```
 
 ## Performance Optimizations
